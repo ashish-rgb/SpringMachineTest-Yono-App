@@ -1,0 +1,47 @@
+Procedural Steps
+---------------------
+
+1- Create a spring starter project-
+		Define name and parent package
+		Enable : ms sql server driver , 
+			spring boot devtools ,
+			spring data jpa,
+			spring web , 
+			spring web services
+
+2- Under pom.xml - 
+		change the scope of com.microsoft.sqlserver to 7.4.1
+
+3- Under application.properties
+			- add server port
+			- add spring.datasource
+			- add hibernate
+
+4- Create packages - namely , 
+				com.nissan.model
+				com.nissan.repo
+				com.nissan.service
+				com.nissan.rest
+
+5- Add external jar in build path (mssql-jdbc-7.4.1.jre8)
+
+6- In model package 
+		- add customer class with all fields with add anotation to the class as @Entity  and @Table(name="TblCustomer")
+		- Columns with @Column annotation and primary key with @Id annotation
+
+7- In repo package 
+		- add interface with extend JpaRepositoryImplementation<Customer, Integer> and add the methods required
+
+8- In service package 
+	a. Add interface ICustomerService with all the methods required for service
+	b. Add a class which implements ICustomerService and inject repo class with @Autowired and implement all the methods of ICustomerService 
+
+9- In rest package
+		- add Controller class with annotations @CrossOrigin , @RestController , @RequestMapping("api/")	
+		- inject ICustomerService with @Autowired
+		- write all the getmapping , postmapping , putmapping and deletemapping methods	
+
+10- Now run the project with maven clean and then maven - update project and then run as spring boot app
+
+11- Verify all the details with postman 
+				
